@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
-import { Github, Linkedin, Twitter } from "lucide-react";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 const teamMembers = [
   {
@@ -11,7 +11,7 @@ const teamMembers = [
     company: "Stellapps technologies pvt Ltd, Bengaluru",
     experience: "6+ years",
     expertise: "Software Development, Project Management",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    image: "/lovable-uploads/ff31d494-7930-40a4-afe0-3d8f6dbbf81b.png",
   },
   {
     id: 2,
@@ -20,7 +20,7 @@ const teamMembers = [
     company: "Unisys India Pvt Ltd, Bengaluru",
     experience: "4+ years",
     expertise: "Product Development, System Architecture",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    image: "/lovable-uploads/4f2e1c28-d16c-4214-a016-6d529e08ebe5.png",
   },
   {
     id: 3,
@@ -29,7 +29,7 @@ const teamMembers = [
     company: "Ansira, Bengaluru",
     experience: "4+ years",
     expertise: "Software Development, Web Technologies",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    image: "/lovable-uploads/4b5cf30c-b868-492b-86ab-4bcfb1108c70.png",
   },
   {
     id: 4,
@@ -38,7 +38,7 @@ const teamMembers = [
     company: "Celestial Systems Inc, Bengaluru",
     experience: "3+ years",
     expertise: "Quality Assurance, Testing",
-    image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    image: "/lovable-uploads/63313b8d-c92a-453d-bd56-68bf97b7ccb4.png",
   }
 ];
 
@@ -58,17 +58,6 @@ const TeamMemberCard = ({ member }: { member: typeof teamMembers[0] }) => {
         <p className="text-sm text-muted-foreground mb-1">{member.company}</p>
         <p className="text-sm text-muted-foreground mb-3">Experience: {member.experience}</p>
         <p className="text-sm mb-4">{member.expertise}</p>
-        <div className="flex space-x-3">
-          <a href="#" className="text-muted-foreground hover:text-madbros-600 transition-colors">
-            <Twitter size={18} />
-          </a>
-          <a href="#" className="text-muted-foreground hover:text-madbros-600 transition-colors">
-            <Linkedin size={18} />
-          </a>
-          <a href="#" className="text-muted-foreground hover:text-madbros-600 transition-colors">
-            <Github size={18} />
-          </a>
-        </div>
       </CardContent>
     </Card>
   );
