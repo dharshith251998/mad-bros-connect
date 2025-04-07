@@ -6,7 +6,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/ui/use-toast";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone, Mailbox, Instagram, Twitter, Linkedin, MessageSquare } from "lucide-react";
+import { Slider } from "@/components/ui/slider";
 
 const ContactForm = () => {
   const { toast } = useToast();
@@ -14,7 +15,8 @@ const ContactForm = () => {
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
+    urgency: 5
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -26,34 +28,66 @@ const ContactForm = () => {
     }));
   };
 
+  const handleSliderChange = (value: number[]) => {
+    setFormData(prev => ({
+      ...prev,
+      urgency: value[0]
+    }));
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Here you would typically send the data to a backend service
-    // For demo purposes, we'll simulate a successful submission
-    setTimeout(() => {
-      // Create a mailto link to open the user's email client
-      const mailtoLink = `mailto:contact@madbros.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`)}`;
-      
-      // Open the email client
-      window.location.href = mailtoLink;
-      
-      toast({
-        title: "Message sent!",
-        description: "We've received your message and will get back to you soon.",
-      });
-      
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      });
-      
-      setIsSubmitting(false);
-    }, 1000);
+    // Create urgency text based on slider value
+    const urgencyText = formData.urgency <= 3 ? "Low Priority" : 
+                        formData.urgency <= 7 ? "Medium Priority" : 
+                        "High Priority";
+    
+    // Create a mailto link to open the user's email client
+    const mailtoLink = `mailto:madbrostech27@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\nUrgency: ${urgencyText} (${formData.urgency}/10)\n\n${formData.message}`)}`;
+    
+    // Open the email client
+    window.location.href = mailtoLink;
+    
+    toast({
+      title: "Message sent!",
+      description: "We've received your message and will get back to you soon.",
+    });
+    
+    setFormData({
+      name: '',
+      email: '',
+      subject: '',
+      message: '',
+      urgency: 5
+    });
+    
+    setIsSubmitting(false);
   };
+
+  const socialLinks = [
+    {
+      name: "Instagram",
+      icon: <Instagram className="h-5 w-5" />,
+      url: "https://instagram.com/madbros27?igshid=YmMyMTA2M2Y="
+    },
+    {
+      name: "Twitter",
+      icon: <Twitter className="h-5 w-5" />,
+      url: "https://twitter.com/MadbrosT?t=huu1kIGr3eCvrKqFkuv7wQ&s=08"
+    },
+    {
+      name: "LinkedIn",
+      icon: <Linkedin className="h-5 w-5" />,
+      url: "https://www.linkedin.com/in/madbros-tech-148754242/"
+    },
+    {
+      name: "Discord",
+      icon: <MessageSquare className="h-5 w-5" />,
+      url: "https://discord.gg/4cvJvSYYFP"
+    }
+  ];
 
   return (
     <section id="contact" className="section-padding bg-secondary/50">
@@ -107,6 +141,24 @@ const ContactForm = () => {
                   </div>
                   
                   <div className="space-y-2">
+                    <Label htmlFor="urgency">Message Urgency</Label>
+                    <div className="pt-2 pb-4">
+                      <Slider 
+                        defaultValue={[5]} 
+                        max={10} 
+                        step={1}
+                        className="bg-gradient-to-r from-green-500 via-yellow-500 to-red-500"
+                        onValueChange={handleSliderChange}
+                      />
+                      <div className="flex justify-between text-sm text-muted-foreground mt-1">
+                        <span>Low Priority</span>
+                        <span>Medium</span>
+                        <span>Urgent</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-2">
                     <Label htmlFor="message">Message</Label>
                     <Textarea 
                       id="message" 
@@ -141,8 +193,9 @@ const ContactForm = () => {
                     <div className="flex items-start">
                       <MapPin className="mr-3 h-5 w-5 text-madbros-600 mt-0.5" />
                       <div>
-                        <h4 className="font-medium">Our Location</h4>
-                        <p className="text-muted-foreground">123 Tech Street, Innovation Hub, Startup City</p>
+                        <h4 className="font-medium">Our Locations</h4>
+                        <p className="text-muted-foreground">Genuis PU & First Grade College, Mysuru</p>
+                        <p className="text-muted-foreground">DailyDose Cafe, MG Road, Hassan</p>
                       </div>
                     </div>
                     
@@ -150,25 +203,36 @@ const ContactForm = () => {
                       <Mail className="mr-3 h-5 w-5 text-madbros-600 mt-0.5" />
                       <div>
                         <h4 className="font-medium">Email Us</h4>
-                        <p className="text-muted-foreground">contact@madbros.com</p>
+                        <p className="text-muted-foreground">madbrostech27@gmail.com</p>
                       </div>
                     </div>
                     
                     <div className="flex items-start">
-                      <Phone className="mr-3 h-5 w-5 text-madbros-600 mt-0.5" />
+                      <MessageSquare className="mr-3 h-5 w-5 text-madbros-600 mt-0.5" />
                       <div>
-                        <h4 className="font-medium">Call Us</h4>
-                        <p className="text-muted-foreground">+1 (123) 456-7890</p>
+                        <h4 className="font-medium">Discord</h4>
+                        <p className="text-muted-foreground">madbros tech</p>
                       </div>
                     </div>
                   </div>
                 </div>
                 
                 <div className="mt-8">
-                  <h4 className="font-medium mb-2">Business Hours</h4>
-                  <p className="text-muted-foreground">Monday - Friday: 9am - 6pm</p>
-                  <p className="text-muted-foreground">Saturday: 10am - 2pm</p>
-                  <p className="text-muted-foreground">Sunday: Closed</p>
+                  <h4 className="font-medium mb-4">Connect With Us</h4>
+                  <div className="flex flex-wrap gap-3">
+                    {socialLinks.map((link, index) => (
+                      <a 
+                        key={index}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 bg-secondary px-4 py-2 rounded-full text-sm hover:bg-madbros-600 hover:text-white transition-colors"
+                      >
+                        {link.icon}
+                        <span>{link.name}</span>
+                      </a>
+                    ))}
+                  </div>
                 </div>
               </CardContent>
             </Card>

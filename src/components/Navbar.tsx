@@ -15,6 +15,7 @@ const Navbar = () => {
       <div className="container flex items-center justify-between h-16">
         <div className="flex items-center">
           <a href="#" className="flex items-center">
+            <img src="/lovable-uploads/74527736-90c8-4a82-9664-ffdf878c539f.png" alt="MAD BRO'S Logo" className="h-10 mr-2" />
             <span className="text-2xl font-extrabold text-madbros-700">MAD BRO'S</span>
           </a>
         </div>
@@ -22,6 +23,7 @@ const Navbar = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-6">
           <a href="#" className="text-foreground hover:text-madbros-600 transition-colors">Home</a>
+          <a href="#about" className="text-foreground hover:text-madbros-600 transition-colors">About</a>
           <a href="#team" className="text-foreground hover:text-madbros-600 transition-colors">Team</a>
           <a href="#services" className="text-foreground hover:text-madbros-600 transition-colors">Services</a>
           <a href="#contact" className="text-foreground hover:text-madbros-600 transition-colors">Contact</a>
@@ -39,6 +41,7 @@ const Navbar = () => {
         <div className="md:hidden bg-background border-b">
           <div className="container py-4 space-y-4">
             <a href="#" className="block py-2 text-foreground hover:text-madbros-600 transition-colors" onClick={toggleMenu}>Home</a>
+            <a href="#about" className="block py-2 text-foreground hover:text-madbros-600 transition-colors" onClick={toggleMenu}>About</a>
             <a href="#team" className="block py-2 text-foreground hover:text-madbros-600 transition-colors" onClick={toggleMenu}>Team</a>
             <a href="#services" className="block py-2 text-foreground hover:text-madbros-600 transition-colors" onClick={toggleMenu}>Services</a>
             <a href="#contact" className="block py-2 text-foreground hover:text-madbros-600 transition-colors" onClick={toggleMenu}>Contact</a>

@@ -27,12 +27,12 @@ const Hero = () => {
         </div>
         <div className="lg:w-1/2 relative">
           <div className="relative h-[400px] sm:h-[500px] w-full overflow-hidden rounded-lg shadow-xl">
-            <div className="absolute inset-0 bg-gradient-to-br from-madbros-600 to-purple-600 opacity-90"></div>
-            <div className="absolute inset-0 flex items-center justify-center text-white">
-              <div className="text-center space-y-6">
-                <div className="font-extrabold text-7xl tracking-tighter">MAD BRO'S</div>
-                <div className="text-xl uppercase tracking-widest">Freelancing Team</div>
-              </div>
+            <div className="absolute inset-0 bg-white flex items-center justify-center p-8">
+              <img 
+                src="/lovable-uploads/74527736-90c8-4a82-9664-ffdf878c539f.png" 
+                alt="MAD BRO'S Logo" 
+                className="w-full h-auto object-contain max-h-full"
+              />
             </div>
           </div>
         </div>

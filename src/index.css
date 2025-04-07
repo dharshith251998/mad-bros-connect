@@ -34,6 +34,19 @@
     --ring: 240 60% 50%;
 
     --radius: 0.5rem;
+    
+    /* MAD BRO'S Colors */
+    --madbros-50: 220 100% 97%;
+    --madbros-100: 219 100% 95%;
+    --madbros-200: 220 100% 89%;
+    --madbros-300: 220 95% 77%;
+    --madbros-400: 219 94% 67%;
+    --madbros-500: 219 100% 59%;
+    --madbros-600: 222 83% 32%;
+    --madbros-700: 223 78% 27%;
+    --madbros-800: 226 67% 24%;
+    --madbros-900: 228 63% 21%;
+    --madbros-950: 230 64% 15%;
   }
 
   .dark {
